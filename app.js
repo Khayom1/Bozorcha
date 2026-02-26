@@ -1,30 +1,64 @@
-// Маълумоти маҳсулот
-const products = [
-    { id: 1, name: "Свитери кӯдакона", price: 50, category: "Либосҳо" },
-    { id: 2, name: "Шими ҷинс", price: 120, category: "Либосҳо" },
-    { id: 3, name: "Кепкаи LA", price: 45, category: "Либосҳо" }
-];
+// 1. ИДОРАКУНИИ САҲИФАҲО (NAVIGATION)
+function navTo(pageId, element) {
+    // Пинҳон кардани ҳамаи саҳифаҳо
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
 
-let cartCount = 0;
+    // Фаъол кардани саҳифаи интихобшуда
+    document.getElementById(pageId).classList.add('active');
 
-// Функсияи илова ба сабад
-function addToCart(name) {
-    cartCount++;
-    document.querySelector('.nav-item:nth-child(3)').innerHTML = `🛒<br>Сабад (${cartCount})`;
-    alert(name + " ба сабад илова шуд!");
+    // Навсозии намуди тугмаҳои навигатсия
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    element.classList.add('active');
 }
 
-// Функсияи ҷустуҷӯ
-document.querySelector('.search-container input').addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase();
-    const cards = document.querySelectorAll('.product-card');
+// 2. СИСТЕМАИ АВТОРИЗАТСИЯ (LOGIC)
+function handleAuth() {
+    const phone = document.getElementById('user-phone').value;
     
-    cards.forEach(card => {
-        const title = card.querySelector('.product-title').innerText.toLowerCase();
-        if(title.includes(term)) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
+    if (phone.length >= 9) {
+        // Симулятсияи воридшавӣ
+        document.getElementById('auth-screen').style.display = 'none';
+        document.getElementById('profile-content').style.display = 'block';
+        
+        // Захира кардани ҳолати вуруд дар браузер
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userPhone', phone);
+    } else {
+        alert("Лутфан рақами телефонро дуруст ворид кунед (9 рақам).");
+    }
+}
+
+// 3. ГУЗАРИШ БАЙНИ ХАРИДОР ВА ФУРӮШАНДА (ROLE SWITCHER)
+let currentRole = 'buyer';
+
+function toggleRole() {
+    const knob = document.getElementById('role-knob');
+    const buyerDash = document.getElementById('buyer-dashboard');
+    const sellerDash = document.getElementById('seller-dashboard');
+
+    if (currentRole === 'buyer') {
+        knob.style.left = '108px'; // Ҳаракат ба тарафи рост
+        buyerDash.style.display = 'none';
+        sellerDash.style.display = 'block';
+        currentRole = 'seller';
+    } else {
+        knob.style.left = '3px'; // Ҳаракат ба тарафи чап
+        buyerDash.style.display = 'block';
+        sellerDash.style.display = 'none';
+        currentRole = 'buyer';
+    }
+}
+
+// 4. САНҶИШИ ҲОЛАТҲО ҲАНГОМИ БОРГУЗОРИИ САЙТ
+window.onload = () => {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        if (document.getElementById('auth-screen')) {
+            document.getElementById('auth-screen').style.display = 'none';
+            document.getElementById('profile-content').style.display = 'block';
         }
-    });
-});
+    }
+};
