@@ -1,0 +1,83 @@
+:root {
+    --primary-gold: #FFB800;    /* Зарди бренди шумо */
+    --bg-light: #F8F9FA;        /* Заминаи тоза ва касбӣ */
+    --text-main: #2C3E50;       /* Ранги матни асосӣ */
+    --price-green: #27AE60;     /* Ранги нарх (Сомонӣ) */
+    --white: #FFFFFF;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg-light); /* Замина акнун сафеди равшан аст */
+    color: var(--text-main);
+}
+
+/* Header-ро зард нигоҳ медорем, то бренд маълум бошад */
+header {
+    background-color: var(--primary-gold);
+    padding: 20px 15px;
+    border-radius: 0 0 25px 25px; /* Кунҷҳои поён мудаввар */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.search-container {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Категорияҳо бо заминаи зард ва матни сафед */
+.categories-nav {
+    display: flex;
+    gap: 12px;
+    padding: 15px;
+    overflow-x: auto;
+}
+
+.cat-item {
+    background: var(--primary-gold);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Карточкаи маҳсулот - Дизайни "Apple-Style" */
+.product-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    transition: transform 0.2s;
+}
+
+.product-card:active {
+    transform: scale(0.98); /* Эффекти пахш кардан */
+}
+
+.price {
+    color: var(--price-green);
+    font-weight: 800;
+    font-size: 18px;
+}
+
+/* Менюи поёнӣ (Bottom Navigation) */
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: var(--white);
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+}
+
