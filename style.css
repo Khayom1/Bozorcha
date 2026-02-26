@@ -1,83 +1,55 @@
-:root {
-    --primary-gold: #FFB800;    /* Зарди бренди шумо */
-    --bg-light: #F8F9FA;        /* Заминаи тоза ва касбӣ */
-    --text-main: #2C3E50;       /* Ранги матни асосӣ */
-    --price-green: #27AE60;     /* Ранги нарх (Сомонӣ) */
-    --white: #FFFFFF;
-}
-
+/* Элементҳои асосӣ */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', -apple-system, sans-serif;
-    background-color: var(--bg-light); /* Замина акнун сафеди равшан аст */
-    color: var(--text-main);
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    background-color: #F4F4F9 !important;
 }
 
-/* Header-ро зард нигоҳ медорем, то бренд маълум бошад */
-header {
-    background-color: var(--primary-gold);
-    padding: 20px 15px;
-    border-radius: 0 0 25px 25px; /* Кунҷҳои поён мудаввар */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* Намоиши саҳифаҳо */
+.page {
+    display: none;
+    min-height: 100vh;
 }
 
-.search-container {
-    background: var(--white);
-    border-radius: 15px;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
+.page.active {
+    display: block !important;
 }
 
-/* Категорияҳо бо заминаи зард ва матни сафед */
-.categories-nav {
-    display: flex;
-    gap: 12px;
-    padding: 15px;
-    overflow-x: auto;
+/* Header-и зард */
+.pro-header {
+    background: #FFB800 !important;
+    padding: 40px 20px !important;
+    border-radius: 0 0 30px 30px !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
 }
 
-.cat-item {
-    background: var(--primary-gold);
-    color: var(--white);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    white-space: nowrap;
+/* Тугмаҳои 3D */
+.btn-3d-main, .menu-row, .grid-card {
+    background: white !important;
+    border-radius: 15px !important;
+    padding: 15px !important;
+    margin: 10px !important;
+    box-shadow: 0 6px 0 #DDD !important; /* Ин эффекти 3D аст */
+    display: block !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
 }
 
-/* Карточкаи маҳсулот - Дизайни "Apple-Style" */
-.product-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-    transition: transform 0.2s;
+.btn-3d-main:active {
+    transform: translateY(4px) !important;
+    box-shadow: 0 2px 0 #DDD !important;
 }
 
-.product-card:active {
-    transform: scale(0.98); /* Эффекти пахш кардан */
+/* Навигатсияи поён */
+.pro-nav {
+    position: fixed !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    background: white !important;
+    display: flex !important;
+    padding: 15px 0 !important;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1) !important;
+    z-index: 9999 !important;
 }
-
-.price {
-    color: var(--price-green);
-    font-weight: 800;
-    font-size: 18px;
-}
-
-/* Менюи поёнӣ (Bottom Navigation) */
-.bottom-bar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: var(--white);
-    display: flex;
-    justify-content: space-around;
-    padding: 15px 0;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
-}
-
