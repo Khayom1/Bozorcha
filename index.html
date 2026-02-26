@@ -2,49 +2,138 @@
 <html lang="tg">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бозорча - Маркетплейси Миллӣ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bozorcha Pro | Маркетплейси Миллӣ</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <div class="search-container">
-            <input type="text" placeholder="Ҷустуҷӯ дар Бозорча...">
-        </div>
-    </header>
+    <div id="app">
+        <section id="home" class="page active">
+            <header class="pro-header">
+                <div class="top-bar">
+                    <div class="logo">Bozorcha</div>
+                    <button class="icon-btn-3d" onclick="openSettings()">⚙️</button>
+                </div>
+                <div class="search-container-pro">
+                    <input type="text" placeholder="Ҷустуҷӯи маҳсулот..." id="global-search">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <div class="main-cat-scroll">
+                    <div class="cat-chip active">Ҳама</div>
+                    <div class="cat-chip">Либос</div>
+                    <div class="cat-chip">Техника</div>
+                    <div class="cat-chip">Хӯрокворӣ</div>
+                </div>
+            </header>
+            <div class="content-area">
+                <div class="sub-category-grid">
+                    <div class="sub-item">👕<span>Футболка</span></div>
+                    <div class="sub-item">🧥<span>Куртка</span></div>
+                    <div class="sub-item">👖<span>Брюк</span></div>
+                    <div class="sub-item">🧶<span>Свитер</span></div>
+                </div>
+                <div class="product-grid-pro" id="main-feed">
+                    </div>
+            </div>
+        </section>
 
-    <div class="categories-nav">
-        <div class="cat-item">Либосҳо</div>
-        <div class="cat-item">Меваву Сабзавот</div>
-        <div class="cat-item">Техника</div>
-        <div class="cat-item">Косметика</div>
+        <section id="chat" class="page">
+            <div class="page-header-pro">Чатҳо</div>
+            <div class="empty-holder">
+                <div class="empty-icon">💬</div>
+                <p>Паёмҳо ҳанӯз мавҷуд нестанд</p>
+            </div>
+        </section>
+
+        <section id="cart" class="page">
+            <div class="page-header-pro">Сабади харид</div>
+            <div id="cart-content">
+                <p class="empty-text">Сабад холӣ аст</p>
+            </div>
+        </section>
+
+        <section id="profile" class="page">
+            <div id="auth-screen" class="auth-layer">
+                <div class="auth-card-pro">
+                    <h2>Хуш омадед</h2>
+                    <p>Барои идома рақами телефон лозим аст</p>
+                    <div class="phone-input-pro">
+                        <span class="prefix">+992</span>
+                        <input type="tel" id="user-phone" placeholder="000 00 0000" maxlength="9">
+                    </div>
+                    <button class="btn-3d-main" onclick="handleAuth()">Ворид шудан</button>
+                </div>
+            </div>
+
+            <div id="profile-content" style="display: none;">
+                <div class="profile-hero-pro">
+                    <div class="avatar-block">
+                        <div class="avatar-circle" id="avatar-display">Х</div>
+                        <div class="verified-check">✓</div>
+                    </div>
+                    <h2 id="user-name-display" contenteditable="true">Корбари нав</h2>
+                    
+                    <div class="role-switch-container" onclick="toggleRole()">
+                        <div id="role-knob"></div>
+                        <span class="role-option">Харидор</span>
+                        <span class="role-option">Фурӯшанда</span>
+                    </div>
+                </div>
+
+                <div id="buyer-dashboard" class="dashboard-active">
+                    <div class="pinduoduo-status-row">
+                        <div class="status-item">💳<br>Пардохт</div>
+                        <div class="status-item">📦<br>Дар роҳ</div>
+                        <div class="status-item">💬<br>Фикру мулоҳиза</div>
+                        <div class="status-item">🛠️<br>Хизматрасонӣ</div>
+                    </div>
+                    <div class="pro-list-menu">
+                        <div class="menu-row">⭐ Маҳсулоти писандида <span>›</span></div>
+                        <div class="menu-row">📍 Суроғаҳои ман <span>›</span></div>
+                        <div class="menu-row">🎁 Бонусҳо ва купонҳо <span>›</span></div>
+                    </div>
+                </div>
+
+                <div id="seller-dashboard" style="display: none;">
+                    <div class="seller-finance-card">
+                        <div class="wallet-info">
+                            <span>Бақия дар ҳамён</span>
+                            <h3>0.00 сомонӣ</h3>
+                        </div>
+                        <button class="withdraw-btn">Гирифтани пул</button>
+                    </div>
+                    <div class="pro-list-menu">
+                        <div class="menu-row-gold">➕ Иловаи маҳсулоти нав</div>
+                        <div class="menu-row">📊 Омори фурӯш <span>›</span></div>
+                        <div class="menu-row">📦 Маҳсулоти фаъол <span>›</span></div>
+                        <div class="menu-row">⚙️ Танзимоти мағоза <span>›</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <nav class="pro-nav">
+            <div class="nav-item active" onclick="navTo('home', this)">
+                <div class="nav-icon">🏠</div>
+                <span>Асосӣ</span>
+            </div>
+            <div class="nav-item" onclick="navTo('chat', this)">
+                <div class="nav-icon">💬</div>
+                <span>Паём</span>
+            </div>
+            <div class="nav-item" onclick="navTo('cart', this)">
+                <div class="nav-icon">🛒</div>
+                <span>Сабад</span>
+            </div>
+            <div class="nav-item" onclick="navTo('profile', this)">
+                <div class="nav-icon">👤</div>
+                <span>Профил</span>
+            </div>
+        </nav>
     </div>
 
-    <main class="product-grid">
-        <div class="product-card">
-            <img src="https://img.freepik.com/free-photo/knitted-sweater-toddler_23-2149357530.jpg" alt="Свитер" class="product-image">
-            <div class="product-info">
-                <h3 class="product-title">Свитери кӯдакона</h3>
-                <p class="product-desc">100% пахта, андозаи 73-110</p>
-                <span class="price">50с</span>
-                <button class="add-to-cart">+</button>
-            </div>
-        </div>
-
-        <div class="product-card-placeholder">
-            <span>Маҳсулоти нав...</span>
-        </div>
-    </main>
-
-    <footer class="bottom-bar">
-        <div class="nav-item">🏠<br>Асосӣ</div>
-        <div class="nav-item">💬<br>Паём</div>
-        <div class="nav-item">🛒<br>Сабад</div>
-        <div class="nav-item">👤<br>Профил</div>
-    </footer>
-
     <script src="app.js"></script>
-
 </body>
 </html>
